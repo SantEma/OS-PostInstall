@@ -154,6 +154,9 @@ color_echo "green" "Firefox installed successfully."
 color_echo "yellow" "Installing Google Chrome..."
 flatpak install -y flathub com.google.Chrome
 color_echo "green" "Google Chrome installed successfully."
+color_echo "yellow" "Installing Thunderbird..."
+flatpak install -y flathub org.mozilla.Thunderbird
+color_echo "green" "Thunderbird installed successfully."
 color_echo "yellow" "Installing Discord..."
 flatpak install -y flathub com.discordapp.Discord
 color_echo "green" "Discord installed successfully."
@@ -178,11 +181,9 @@ color_echo "green" "VLC installed successfully."
 color_echo "yellow" "Installing OBS Studio..."
 dnf install -y obs-studio
 color_echo "green" "OBS Studio installed successfully."
-
-# Install Remote Networking applications
-color_echo "yellow" "Installing AnyDesk..."
-flatpak install -y flathub com.anydesk.Anydesk
-color_echo "green" "AnyDesk installed successfully."
+color_echo "yellow" "Installing Kdenlive..."
+flatpak install -y flathub org.kde.kdenlive
+color_echo "green" "Kdenlive installed successfully."
 
 # Install System Tools applications
 color_echo "yellow" "Installing Gear Lever..."
@@ -192,8 +193,19 @@ color_echo "green" "Gear Lever installed successfully."
 
 # Customization
 
-
 # Custom user-defined commands
+# Custom user-defined commands
+# Remove unecessary KDE packages
+color_echo "yellow" "Removing unecessary KDE tools..."
+dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kmouth kolourpaint kaddressbook kmail kontact korganizer -y
+
+color_echo "yellow" "Installing user apps..."
+# Install Termius
+flatpak install -y flathub com.termius.Termius 
+# Install Parsec
+flatpak install -y flathub com.parsecgaming.parsec 
+# Install Ferdium
+flatpak install -y flathub org.ferdium.Ferdium
 
 
 # Before finishing, ensure we're in a safe directory
