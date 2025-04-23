@@ -158,11 +158,6 @@ color_echo "yellow" "Installing Discord..."
 flatpak install -y flathub com.discordapp.Discord
 color_echo "green" "Discord installed successfully."
 
-# Install Office Productivity applications
-color_echo "yellow" "Installing Obsidian..."
-flatpak install -y flathub md.obsidian.Obsidian
-color_echo "green" "Obsidian installed successfully."
-
 # Install Coding and DevOps applications
 color_echo "yellow" "Installing Visual Studio Code..."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
