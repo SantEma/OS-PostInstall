@@ -5,3 +5,4 @@ Lo script è stato generato con [questo tool](https://nattdf.streamlit.app). Alc
 Programmi che oramai uso (non inclusi nello script):
 - Youtube Music (client di terze parti su Github, via GearLever)
 - Obsidian (AppImage, via GearLever)
+- JetBrains ToolBox
