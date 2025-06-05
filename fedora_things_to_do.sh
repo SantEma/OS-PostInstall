@@ -206,6 +206,11 @@ flatpak install -y flathub com.termius.Termius
 flatpak install -y flathub com.parsecgaming.parsec 
 # Install Ferdium
 flatpak install -y flathub org.ferdium.Ferdium
+# Install CoolerControl 
+sudo dnf install dnf-plugins-core
+sudo dnf copr enable codifryed/CoolerControl
+sudo dnf install coolercontrol
+sudo systemctl enable --now coolercontrold
 
 
 # Before finishing, ensure we're in a safe directory
