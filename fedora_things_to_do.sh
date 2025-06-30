@@ -140,26 +140,16 @@ dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld -y
 color_echo "yellow" "Installing virtualization tools..."
 dnf install -y @virtualization
 
-
 # App Installation
 # Install essential applications
 color_echo "yellow" "Installing essential applications..."
-dnf install -y htop fastfetch unzip unrar git wget curl
+dnf install -y htop fastfetch unzip unrar git wget curl gcc
 color_echo "green" "Essential applications installed successfully."
 
 # Install Internet & Communication applications
-color_echo "yellow" "Installing Firefox..."
-flatpak install -y flathub org.mozilla.firefox
-color_echo "green" "Firefox installed successfully."
-color_echo "yellow" "Installing Google Chrome..."
-flatpak install -y flathub com.google.Chrome
-color_echo "green" "Google Chrome installed successfully."
-color_echo "yellow" "Installing Thunderbird..."
-flatpak install -y flathub org.mozilla.Thunderbird
-color_echo "green" "Thunderbird installed successfully."
-color_echo "yellow" "Installing Discord..."
-flatpak install -y flathub com.discordapp.Discord
-color_echo "green" "Discord installed successfully."
+color_echo "yellow" "Installing Chromium..."
+flatpak install -y flathub org.chromium.Chromium
+color_echo "green" "Chromium installed successfully."
 
 # Install Coding and DevOps applications
 color_echo "yellow" "Installing Visual Studio Code..."
@@ -181,9 +171,6 @@ color_echo "green" "VLC installed successfully."
 color_echo "yellow" "Installing OBS Studio..."
 dnf install -y obs-studio
 color_echo "green" "OBS Studio installed successfully."
-color_echo "yellow" "Installing Kdenlive..."
-flatpak install -y flathub org.kde.kdenlive
-color_echo "green" "Kdenlive installed successfully."
 
 # Install System Tools applications
 color_echo "yellow" "Installing Gear Lever..."
@@ -197,7 +184,7 @@ color_echo "green" "Gear Lever installed successfully."
 # Custom user-defined commands
 # Remove unecessary KDE packages
 color_echo "yellow" "Removing unecessary KDE tools..."
-dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint kaddressbook kmail kontact korganizer neochat -y --no-autoremove
+dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint kaddressbook kmail kontact korganizer neochat firefox -y --no-autoremove
 
 color_echo "yellow" "Installing user apps..."
 # Install Termius
@@ -206,11 +193,24 @@ flatpak install -y flathub com.termius.Termius
 flatpak install -y flathub com.parsecgaming.parsec 
 # Install Ferdium
 flatpak install -y flathub org.ferdium.Ferdium
-# Install CoolerControl 
+# Install Audacity
+flatpak install -y flathub org.audacityteam.Audacity
+# Install EasyEffect
+flatpak install -y flathub com.github.wwmm.easyeffects
+# Install ZapZap
+flatpak install -y flathub com.rtosta.zapzap
+# Install ProtonPass
+flatpak install -y flathub me.proton.Pass
+# Install Telegram
+flatpak install -y flathub org.telegram.desktop
+# Install BetterBird
+flatpak install -y flathub eu.betterbird.Betterbird
+# Install Brave
 sudo dnf install dnf-plugins-core
-sudo dnf copr enable codifryed/CoolerControl
-sudo dnf install coolercontrol
-sudo systemctl enable --now coolercontrold
+sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo dnf install brave-browser -y
+# Install Discord
+sudo dnf install discord -y
 
 
 # Before finishing, ensure we're in a safe directory
