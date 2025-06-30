@@ -205,6 +205,10 @@ flatpak install -y flathub me.proton.Pass
 flatpak install -y flathub org.telegram.desktop
 # Install BetterBird
 flatpak install -y flathub eu.betterbird.Betterbird
+# Install Pomodoro Timer
+flatpak install -y flathub org.jousse.vincent.Pomodorolm
+# Install LocalSend
+flatpak install -y flathub org.localsend.localsend_app
 # Install Brave
 sudo dnf install dnf-plugins-core
 sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
