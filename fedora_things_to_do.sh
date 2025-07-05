@@ -184,7 +184,7 @@ color_echo "green" "Gear Lever installed successfully."
 # Custom user-defined commands
 # Remove unecessary KDE packages
 color_echo "yellow" "Removing unecessary KDE tools..."
-dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint kaddressbook kmail kontact korganizer neochat firefox -y --no-autoremove
+dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint kaddressbook kmail kontact korganizer neochat firefox qrca -y --no-autoremove
 
 color_echo "yellow" "Installing user apps..."
 # Install Termius
