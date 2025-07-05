@@ -190,9 +190,7 @@ color_echo "yellow" "Installing user apps..."
 # Install Termius
 flatpak install -y flathub com.termius.Termius 
 # Install Parsec
-flatpak install -y flathub com.parsecgaming.parsec 
-# Install Ferdium
-flatpak install -y flathub org.ferdium.Ferdium
+flatpak install -y flathub com.parsecgaming.parsec
 # Install Audacity
 flatpak install -y flathub org.audacityteam.Audacity
 # Install EasyEffect
