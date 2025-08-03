@@ -217,6 +217,9 @@ color_echo "green" "Gear Lever installed successfully."
 # Custom user-defined commands
 color_echo "yellow" "Removing unecessary KDE tools..."
 dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint kaddressbook kmail kontact korganizer neochat firefox qrca -y --no-autoremove
+color_echo "yellow" "Disabling NetworkManager-wait-online"
+sudo systemctl disable NetworkManager-wait-online.service
+color_echo "yellow" "Installing necessary apps"
 # Install Termius
 flatpak install -y flathub com.termius.Termius
 # Install Parsec
