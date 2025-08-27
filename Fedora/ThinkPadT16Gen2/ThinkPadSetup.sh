@@ -215,15 +215,13 @@ color_echo "green" "Gear Lever installed successfully."
 
 # Custom user-defined commands
 # Custom user-defined commands
-color_echo "yellow" "Removing unecessary KDE tools..."
-dnf remove akregator kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint kaddressbook kmail kontact korganizer neochat firefox qrca -y --no-autoremove
+color_echo "yellow" "Removing unecessary tools..."
+dnf remove firefox -y --no-autoremove
 color_echo "yellow" "Disabling NetworkManager-wait-online"
 sudo systemctl disable NetworkManager-wait-online.service
 color_echo "yellow" "Installing necessary apps"
 # Install Termius
 flatpak install -y flathub com.termius.Termius
-# Install Parsec
-flatpak install -y flathub com.parsecgaming.parsec
 # Install EasyEffect
 flatpak install -y flathub com.github.wwmm.easyeffects
 # Install ZapZap
@@ -234,7 +232,8 @@ flatpak install -y flathub me.proton.Pass
 flatpak install -y flathub org.jousse.vincent.Pomodorolm
 # Install LocalSend
 flatpak install -y flathub org.localsend.localsend_app
-
+# Install Moonlight
+flatpak install -y flathub com.moonlight_stream.Moonlight
 
 # Before finishing, ensure we're in a safe directory
 cd /tmp || cd $ACTUAL_HOME || cd /
