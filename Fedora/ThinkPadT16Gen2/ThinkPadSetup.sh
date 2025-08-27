@@ -137,10 +137,10 @@ dnf swap ffmpeg-free ffmpeg --allowerasing -y
 dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -y
 dnf update @sound-and-video -y
 
-# Install Hardware Accelerated Codecs for AMD GPUs. This improves video playback and encoding performance on systems with AMD graphics.
-color_echo "yellow" "Installing AMD Hardware Accelerated Codecs..."
-dnf swap mesa-va-drivers mesa-va-drivers-freeworld -y
-dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld -y
+# Install Hardware Accelerated Codecs for AMD GPUs. This improves video playback and encoding performance on systems with AMD graphics. SEEMS TO NOT BE WORKING RIGHT NOW, DON'T UNCOMMENT
+# color_echo "yellow" "Installing AMD Hardware Accelerated Codecs..."
+# dnf swap mesa-va-drivers mesa-va-drivers-freeworld -y
+# dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld -y
 
 # Install virtualization tools to enable virtual machines and containerization
 color_echo "yellow" "Installing virtualization tools..."
