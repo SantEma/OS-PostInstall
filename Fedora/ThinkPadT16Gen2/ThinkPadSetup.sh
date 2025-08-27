@@ -164,10 +164,6 @@ fi
 rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 dnf install -y brave-browser
 color_echo "green" "Brave installed successfully."
-color_echo "yellow" "Installing LibreWolf..."
-curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
-dnf install -y librewolf
-color_echo "green" "LibreWolf installed successfully."
 color_echo "yellow" "Installing Betterbird..."
 flatpak install -y flathub eu.betterbird.Betterbird
 color_echo "green" "Betterbird installed successfully."
