@@ -234,6 +234,8 @@ flatpak install -y flathub org.jousse.vincent.Pomodorolm
 flatpak install -y flathub org.localsend.localsend_app
 # Install Moonlight
 flatpak install -y flathub com.moonlight_stream.Moonlight
+# Install Gnome Extension
+flatpak install -y flathub com.mattjakeman.ExtensionManager
 
 # Before finishing, ensure we're in a safe directory
 cd /tmp || cd $ACTUAL_HOME || cd /
