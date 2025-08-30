@@ -83,7 +83,7 @@ echo "║                                                                       
 echo "╚═════════════════════════════════════════════════════════════════════════════╝";
 echo "";
 echo "This script automates \"Things To Do!\" steps after a fresh Fedora Workstation installation"
-echo "ver. 25.03"
+echo "ver. 25.08 / 100 Stars Edition"
 echo ""
 echo "Don't run this script if you didn't build it yourself or don't know what it does."
 echo ""
@@ -129,7 +129,7 @@ fwupdmgr update -y
 color_echo "yellow" "Enabling RPM Fusion repositories..."
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-dnf group update core -y
+dnf update @core -y
 
 # Install multimedia codecs to enhance multimedia capabilities
 color_echo "yellow" "Installing multimedia codecs..."
@@ -137,10 +137,10 @@ dnf swap ffmpeg-free ffmpeg --allowerasing -y
 dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -y
 dnf update @sound-and-video -y
 
-# Install Hardware Accelerated Codecs for AMD GPUs. This improves video playback and encoding performance on systems with AMD graphics. SEEMS TO NOT BE WORKING RIGHT NOW, DON'T UNCOMMENT
-# color_echo "yellow" "Installing AMD Hardware Accelerated Codecs..."
-# dnf swap mesa-va-drivers mesa-va-drivers-freeworld -y
-# dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld -y
+# Install Hardware Accelerated Codecs for AMD GPUs. This improves video playback and encoding performance on systems with AMD graphics.
+color_echo "yellow" "Installing AMD Hardware Accelerated Codecs..."
+dnf swap mesa-va-drivers mesa-va-drivers-freeworld -y
+dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld -y
 
 # Install virtualization tools to enable virtual machines and containerization
 color_echo "yellow" "Installing virtualization tools..."
@@ -150,25 +150,18 @@ dnf install -y @virtualization
 # App Installation
 # Install essential applications
 color_echo "yellow" "Installing essential applications..."
-dnf install -y htop fastfetch unzip unrar git wget curl wg-quick
+dnf install -y fastfetch unzip unrar git wget curl
 color_echo "green" "Essential applications installed successfully."
 
 # Install Internet & Communication applications
 color_echo "yellow" "Installing Brave..."
-dnf install -y dnf-plugins-core
-if command -v dnf4 &>/dev/null; then
-  dnf4 config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-else
-  dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-fi
-rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-dnf install -y brave-browser
+flatpak install -y flathub com.brave.Browser
 color_echo "green" "Brave installed successfully."
 color_echo "yellow" "Installing Betterbird..."
 flatpak install -y flathub eu.betterbird.Betterbird
 color_echo "green" "Betterbird installed successfully."
 color_echo "yellow" "Installing Discord..."
-dnf install -y discord
+flatpak install -y flathub com.discordapp.Discord
 color_echo "green" "Discord installed successfully."
 color_echo "yellow" "Installing Telegram Desktop..."
 flatpak install -y flathub org.telegram.desktop
@@ -192,7 +185,7 @@ color_echo "yellow" "Installing VLC..."
 flatpak install -y flathub org.videolan.VLC
 color_echo "green" "VLC installed successfully."
 color_echo "yellow" "Installing OBS Studio..."
-flatpak install -y flathub com.obsproject.Studio
+dnf install -y obs-studio
 color_echo "green" "OBS Studio installed successfully."
 
 # Install Remote Networking applications
@@ -204,6 +197,9 @@ color_echo "green" "RustDesk installed successfully."
 color_echo "yellow" "Installing Gear Lever..."
 flatpak install -y flathub it.mijorus.gearlever
 color_echo "green" "Gear Lever installed successfully."
+color_echo "yellow" "Installing NetPeek..."
+flatpak install -y flathub io.github.zingytomato.netpeek
+color_echo "green" "NetPeek installed successfully."
 
 
 # Customization
@@ -211,10 +207,12 @@ color_echo "green" "Gear Lever installed successfully."
 
 # Custom user-defined commands
 # Custom user-defined commands
-color_echo "yellow" "Removing unecessary tools..."
-dnf remove firefox -y --no-autoremove
 color_echo "yellow" "Disabling NetworkManager-wait-online"
-sudo systemctl disable NetworkManager-wait-online.service
+systemctl disable NetworkManager-wait-online.service
+color_echo "yellow" "Removing KDE-PIM group"
+dnf group remove kde-pim -y
+color_echo "yellow" "Removing KDE apps"
+dnf remove kamoso mediawriter elisa-player kcharselect kcolorchooser dragon kmines kmahjongg kpat kmouth kolourpaint neochat firefox qrca -y --no-autoremove
 color_echo "yellow" "Installing necessary apps"
 # Install Termius
 flatpak install -y flathub com.termius.Termius
@@ -230,8 +228,9 @@ flatpak install -y flathub org.jousse.vincent.Pomodorolm
 flatpak install -y flathub org.localsend.localsend_app
 # Install Moonlight
 flatpak install -y flathub com.moonlight_stream.Moonlight
-# Install Gnome Extension
-flatpak install -y flathub com.mattjakeman.ExtensionManager
+# Install WG-quick
+dnf install wg-quick -y
+
 
 # Before finishing, ensure we're in a safe directory
 cd /tmp || cd $ACTUAL_HOME || cd /
