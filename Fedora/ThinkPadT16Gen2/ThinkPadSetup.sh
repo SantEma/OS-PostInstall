@@ -182,7 +182,7 @@ color_echo "green" "Visual Studio Code installed successfully."
 
 # Install Media & Graphics applications
 color_echo "yellow" "Installing VLC..."
-dnf install vlc
+dnf install -y vlc
 color_echo "green" "VLC installed successfully."
 color_echo "yellow" "Installing OBS Studio..."
 dnf install -y obs-studio
