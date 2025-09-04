@@ -182,7 +182,7 @@ color_echo "green" "Visual Studio Code installed successfully."
 
 # Install Media & Graphics applications
 color_echo "yellow" "Installing VLC..."
-flatpak install -y flathub org.videolan.VLC
+dnf install vlc
 color_echo "green" "VLC installed successfully."
 color_echo "yellow" "Installing OBS Studio..."
 dnf install -y obs-studio
