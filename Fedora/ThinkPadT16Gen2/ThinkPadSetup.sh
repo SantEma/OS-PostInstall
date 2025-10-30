@@ -197,9 +197,6 @@ color_echo "green" "RustDesk installed successfully."
 color_echo "yellow" "Installing Gear Lever..."
 flatpak install -y flathub it.mijorus.gearlever
 color_echo "green" "Gear Lever installed successfully."
-color_echo "yellow" "Installing NetPeek..."
-flatpak install -y flathub io.github.zingytomato.netpeek
-color_echo "green" "NetPeek installed successfully."
 
 
 # Customization
@@ -228,9 +225,6 @@ flatpak install -y flathub org.jousse.vincent.Pomodorolm
 flatpak install -y flathub org.localsend.localsend_app
 # Install Moonlight
 flatpak install -y flathub com.moonlight_stream.Moonlight
-# Install WG-quick
-dnf install wg-quick -y
-
 
 # Before finishing, ensure we're in a safe directory
 cd /tmp || cd $ACTUAL_HOME || cd /
