@@ -102,13 +102,13 @@ hostnamectl set-hostname T16G2
 # Optimize DNF package manager for faster downloads and efficient updates
 color_echo "yellow" "Configuring DNF Package Manager..."
 backup_file "/etc/dnf/dnf.conf"
-echo "max_parallel_downloads=10" | tee -a /etc/dnf/dnf.conf > /dev/null
+echo "max_parallel_downloads=20" | tee -a /etc/dnf/dnf.conf > /dev/null
 dnf -y install dnf-plugins-core
 
 # Enable and configure automatic system updates to enhance security and stability
 color_echo "yellow" "Enabling DNF autoupdate..."
 dnf install dnf-automatic -y
-sed -i 's/apply_updates = no/apply_updates = yes/' /etc/dnf/automatic.conf
+touch /etc/dnf/automatic.conf
 systemctl enable --now dnf-automatic.timer
 
 # Replace Fedora Flatpak Repo with Flathub for better package management and apps stability
