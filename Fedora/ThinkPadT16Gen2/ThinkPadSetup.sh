@@ -185,7 +185,7 @@ color_echo "yellow" "Installing VLC..."
 dnf install -y vlc
 color_echo "green" "VLC installed successfully."
 color_echo "yellow" "Installing OBS Studio..."
-dnf install -y obs-studio
+flatpak install flathub com.obsproject.Studio
 color_echo "green" "OBS Studio installed successfully."
 
 # Install Remote Networking applications
